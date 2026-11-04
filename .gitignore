@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.anti-slop/
+!examples/**/.anti-slop/
+bench/runs/
+.DS_Store
+node_modules/

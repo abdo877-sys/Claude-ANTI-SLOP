@@ -1,0 +1,11 @@
+name: Idea / feature
+description: Suggest an improvement to the method, a workflow or a tool
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes: { label: Problem it solves, description: Ideally with a real example of bad output. }
+    validations: { required: true }
+  - type: textarea
+    id: proposal
+    attributes: { label: Proposal }

@@ -1,0 +1,18 @@
+name: New AI tell
+description: A generic AI-UI pattern the scanner or the skill misses
+labels: [tell]
+body:
+  - type: textarea
+    id: pattern
+    attributes: { label: The pattern, description: What it looks like and why it reads as generic. }
+    validations: { required: true }
+  - type: textarea
+    id: snippet
+    attributes: { label: Smallest code snippet that shows it, render: text }
+    validations: { required: true }
+  - type: dropdown
+    id: category
+    attributes: { label: Category, options: [identity, function, accessibility, performance, visual-only (not detectable in code)] }
+  - type: textarea
+    id: instead
+    attributes: { label: What should be done instead? }

@@ -1,0 +1,14 @@
+name: Bug
+description: A script crashes, a workflow step is wrong, or installation fails
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes: { label: What happened, description: Include the command and its output. }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: What you expected }
+  - type: input
+    id: env
+    attributes: { label: Environment, placeholder: "OS, Python version, Claude Code version, skill version" }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request access — Harbor Ledger</title>
+  <meta name="description" content="Tell us about your shop to request access to Harbor Ledger.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="contact.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="index.html" aria-label="Harbor Ledger, home">Harbor<span>&nbsp;Ledger</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Request access</p>
+        <h1 style="font-size: var(--step-3)">Tell us about your shop.</h1>
+        <p>We’ll reply on WhatsApp or by email.</p>
+      </div>
+
+      <form class="form" id="access-form" action="#" method="post" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+          <p class="error" id="name-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="shop">Shop name and neighbourhood</label>
+          <input id="shop" name="shop" autocomplete="organization" required aria-describedby="shop-error">
+          <p class="error" id="shop-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="phone">WhatsApp number</label>
+          <span class="hint" id="phone-hint">Example: +253 77 12 34 56</span>
+          <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="phone-hint phone-error">
+          <p class="error" id="phone-error" hidden></p>
+        </div>
+        <div class="field">
+          <label for="message">Anything else? <span class="hint">(optional)</span></label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <div><button class="btn btn-primary" type="submit">Send request</button></div>
+        <p class="status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>© 2026 Harbor Ledger · Djibouti</p><a href="index.html">Home</a></div>
+  </footer>
+</body>
+</html>

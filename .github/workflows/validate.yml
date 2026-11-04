@@ -1,0 +1,34 @@
+name: validate
+on:
+  push:
+  pull_request:
+jobs:
+  skill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Validate skill structure, frontmatter and links
+        run: python3 tools/validate_skill.py
+      - name: Scanner regression tests
+        run: python3 tests/test_rules.py
+      - name: Scanner runs on the seed (must flag it) and the example (must pass)
+        run: |
+          python3 skills/anti-slop/scripts/slop_scan.py bench/seeds/generic-landing --fail-under 20 && exit 1 || true
+          python3 skills/anti-slop/scripts/slop_scan.py examples/harbor-ledger/after --fail-under 95
+      - name: Installer works
+        run: |
+          HOME=$(mktemp -d) sh install.sh && test -f "$HOME/.claude/skills/anti-slop/SKILL.md"
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install playwright && python3 -m playwright install --with-deps chromium
+      - name: Page check on the example (served over HTTP)
+        run: |
+          cd examples/harbor-ledger && (python3 -m http.server 8765 &) && sleep 1 && cd ../..
+          python3 skills/anti-slop/scripts/page_check.py http://localhost:8765/after/index.html --json --out /tmp/shots > /tmp/page.json
+          python3 -c "import json,sys; d=json.load(open('/tmp/page.json')); i=d['summary']['issues']; print(i); sys.exit(1 if i else 0)"

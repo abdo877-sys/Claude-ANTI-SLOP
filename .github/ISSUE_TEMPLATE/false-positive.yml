@@ -1,0 +1,16 @@
+name: False positive
+description: The scanner flagged something that is legitimate
+labels: [false-positive]
+body:
+  - type: input
+    id: rule
+    attributes: { label: Rule id, placeholder: e.g. HERO-3-CARDS }
+    validations: { required: true }
+  - type: textarea
+    id: snippet
+    attributes: { label: Smallest snippet that triggers it, render: text }
+    validations: { required: true }
+  - type: textarea
+    id: why
+    attributes: { label: Why it is legitimate here }
+    validations: { required: true }
